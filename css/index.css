@@ -2364,6 +2364,23 @@ blockquote > :last-child {
   -ms-transform: translateZ(0);
   transform: translateZ(0);
 }
+.recent-post-item,
+.avatar-img {
+  opacity: 0.75;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+  filter: alpha(opacity=75);
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+.recent-post-item:hover,
+.avatar-img:hover {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
 .container .flink {
   margin-bottom: 20px;
 }
@@ -3287,6 +3304,19 @@ blockquote > :last-child {
   overflow: hidden;
   margin-bottom: 20px;
   padding: 20px 24px;
+  opacity: 0.75;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+  filter: alpha(opacity=75);
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+#aside-content .card-widget:hover {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }
 #aside-content .card-info .author-info-name {
   font-weight: 500;
@@ -3334,6 +3364,21 @@ blockquote > :last-child {
 }
 #aside-content .card-info #card-info-btn span {
   padding-left: 10px;
+}
+#aside-content .card-widget.card-info {
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+#aside-content .card-widget.card-info:hover {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }
 #aside-content .item-headline {
   padding-bottom: 6px;
@@ -4151,13 +4196,6 @@ blockquote > :last-child {
   -ms-transition: all 0.5s;
   transition: all 0.5s;
 }
-#page-header:not(.not-top-img):before {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: var(--mark-bg);
-  content: '';
-}
 #page-header.full_page {
   height: 100vh;
   background-attachment: fixed;
@@ -4192,10 +4230,34 @@ blockquote > :last-child {
 }
 #page-header.full_page #site-info .site-top-row .site-top-left,
 #page-header.full_page #site-info .site-top-row .site-top-right {
-  color: var(--white);
-  font-size: 1.25em;
-  line-height: 1.4;
+  color: #171328;
+  font-size: 1.8em;
+  font-weight: 600;
+  line-height: 1.3;
   max-width: 48%;
+  position: relative;
+  -webkit-transition: -webkit-transform 0.25s ease, filter 0.25s ease;
+  -moz-transition: -moz-transform 0.25s ease, filter 0.25s ease;
+  -o-transition: -o-transform 0.25s ease, filter 0.25s ease;
+  -ms-transition: -ms-transform 0.25s ease, filter 0.25s ease;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+#page-header.full_page #site-info .site-top-row .site-top-left::after,
+#page-header.full_page #site-info .site-top-row .site-top-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+#page-header.full_page #site-info .site-top-row .site-top-left:hover,
+#page-header.full_page #site-info .site-top-row .site-top-right:hover {
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  -o-transform: translateY(-8px);
+  -ms-transform: translateY(-8px);
+  transform: translateY(-8px);
+  filter: drop-shadow(0 8px 18px rgba(44,24,78,0.25));
 }
 @media screen and (max-width: 768px) {
   #page-header.full_page #site-info .site-top-row {
@@ -4222,7 +4284,7 @@ blockquote > :last-child {
 }
 #page-header #site-title {
   margin: 0;
-  color: var(--white);
+  color: #171328;
   font-size: 1.85em;
 }
 @media screen and (min-width: 768px) {
@@ -4330,7 +4392,7 @@ blockquote > :last-child {
 #page-header.not-top-img #nav a,
 #page-header.not-top-img #nav span.site-page,
 #page-header.not-top-img #nav .site-name {
-  color: var(--font-color);
+  color: #171328;
   text-shadow: none;
 }
 #page-header.nav-fixed #nav {
@@ -4366,7 +4428,7 @@ blockquote > :last-child {
 #page-header.nav-fixed #nav a,
 #page-header.nav-fixed #nav span.site-page,
 #page-header.nav-fixed #nav #toggle-menu {
-  color: var(--font-color);
+  color: #171328;
   text-shadow: none;
 }
 #page-header.nav-fixed #nav a:hover,

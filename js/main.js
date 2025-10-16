@@ -928,3 +928,91 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 })
+
+// Simple particle hover effect for top_text
+(function() {
+  const colors = ['#0b3b66', '#2b0b3b', '#5b2bd6', '#0f172a']
+
+  function createCanvasFor(ele) {
+    const rect = ele.getBoundingClientRect()
+    const canvas = document.createElement('canvas')
+    canvas.style.position = 'absolute'
+    canvas.style.left = rect.left + 'px'
+    canvas.style.top = rect.top + 'px'
+    canvas.style.pointerEvents = 'none'
+    canvas.style.zIndex = 9999
+    canvas.width = rect.width
+    canvas.height = rect.height
+    document.body.appendChild(canvas)
+    return { canvas, rect }
+  }
+
+  function spawnParticlesAt(ele, x, y) {
+    const { canvas, rect } = createCanvasFor(ele)
+    const ctx = canvas.getContext('2d')
+    const particles = []
+    for (let i = 0; i < 18; i++) {
+      particles.push({
+        x: x + (Math.random() - 0.5) * rect.width * 0.2,
+        y: y + (Math.random() - 0.5) * rect.height * 0.2,
+        vx: (Math.random() - 0.5) * 2,
+        vy: -Math.random() * 2 - 0.5,
+        life: 40 + Math.random() * 30,
+        r: 1 + Math.random() * 3,
+        c: colors[Math.floor(Math.random() * colors.length)]
+      })
+    }
+
+    let frame = 0
+    const id = setInterval(() => {
+      frame++
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      particles.forEach(p => {
+        p.x += p.vx
+        p.y += p.vy
+        p.vy += 0.05
+        p.life--
+        const alpha = Math.max(0, p.life / 60)
+        ctx.beginPath()
+        ctx.fillStyle = hexToRgba(p.c, alpha)
+        ctx.shadowBlur = 12
+        ctx.shadowColor = p.c
+        ctx.arc(p.x - rect.left, p.y - rect.top, p.r, 0, Math.PI * 2)
+        ctx.fill()
+      })
+      if (particles.every(p => p.life <= 0) || frame > 80) {
+        clearInterval(id)
+        canvas.remove()
+      }
+    }, 16)
+  }
+
+  function hexToRgba(hex, a) {
+    const c = hex.replace('#','')
+    const bigint = parseInt(c, 16)
+    const r = (bigint >> 16) & 255
+    const g = (bigint >> 8) & 255
+    const b = bigint & 255
+    return `rgba(${r},${g},${b},${a})`
+  }
+
+  function attach() {
+    const els = document.querySelectorAll('.site-top-left, .site-top-right')
+    if (!els.length) return
+
+    els.forEach(el => {
+      el.addEventListener('mouseenter', e => {
+        const rect = el.getBoundingClientRect()
+        const x = e.clientX
+        const y = e.clientY
+        spawnParticlesAt(el, x, y)
+      })
+    })
+  }
+
+  // initialize on DOMContentLoaded and after pjax updates if applicable
+  document.addEventListener('DOMContentLoaded', attach)
+  if (window.btf && typeof window.btf.addGlobalFn === 'function') {
+    window.btf.addGlobalFn('pjaxComplete', attach)
+  }
+})()

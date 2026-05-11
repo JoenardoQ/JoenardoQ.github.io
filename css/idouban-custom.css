@@ -72,15 +72,17 @@
 .layout > .page-title { background: transparent !important; box-shadow: none !important; margin: 0 auto 20px !important; width: 100% !important; }
 
 
-.category-grid-layout { background: transparent !important; box-shadow: none !important; padding: 0 !important; } .category-grid-layout:hover { box-shadow: none !important; }
-
-#recent-posts > .page-title { background: transparent !important; box-shadow: none !important; width: 100% !important; }
-
-#recent-posts > .page-title { background: transparent !important; box-shadow: none !important; width: 100% !important; }
-
-.layout > div:first-child:not(.nc) { background: transparent !important; box-shadow: none !important; padding: 0 !important; align-self: normal !important; } .layout > div:first-child:not(.nc):hover { box-shadow: none !important; } .page-title { color: #fff !important; }
-
-.layout > div:first-child:not(.recent-posts) { background: transparent !important; box-shadow: none !important; } .category-grid-layout { background: transparent !important; box-shadow: none !important; margin: 0 !important; } .page-title { color: #ffffff !important; font-weight: bold; } [data-theme='dark'] .page-title { color: #ffffff !important; }
 
 
-#content-inner > .category-grid-layout, .layout > div:first-child:not(.nc) { background: transparent !important; box-shadow: none !important; padding: 0 !important; } #content-inner > .category-grid-layout:hover, .layout > div:first-child:not(.nc):hover { background: transparent !important; box-shadow: none !important; }
+
+
+
+
+
+
+
+
+
+
+
+.layout > .category-grid-layout { background: transparent !important; box-shadow: none !important; padding: 0 !important; }

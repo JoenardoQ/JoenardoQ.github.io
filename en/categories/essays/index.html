@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Category: 杂谈 | Joenardo</title><meta name="author" content="Joenardo"><meta name="copyright" content="Joenardo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Joenardo">
+<meta property="og:url" content="https://joenardoq.github.io/en/categories/essays/index.html">
+<meta property="og:site_name" content="Joenardo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://joenardoq.github.io/img/%E5%A4%B4%E5%83%8F.png">
+<meta property="article:author" content="Joenardo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://joenardoq.github.io/img/%E5%A4%B4%E5%83%8F.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://joenardoq.github.io/en/categories/essays/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Category: 杂谈',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'category'
+}</script><link rel="stylesheet" href="/css/idouban-custom.css"><meta name="generator" content="Hexo 8.0.0"></head><body><div id="web_bg" style="background-image: url(/img/%E5%85%8B%E4%B8%BD%E6%96%AF%E8%85%BE.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E5%A4%B4%E5%83%8F.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">108</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/research/"><i class="fa-fw fas fa-flask"></i><span> 科研</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-feather"></i><span> 创作</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/poetry/"><i class="fa-fw fas fa-book"></i><span> 诗词</span></a></li><li><a class="site-page child" href="/categories/fanworks/"><i class="fa-fw fas fa-users"></i><span> 同人</span></a></li><li><a class="site-page child" href="/categories/essays/"><i class="fa-fw fas fa-pen"></i><span> 杂谈</span></a></li><li><a class="site-page child" href="/categories/photo/"><i class="fa-fw fas fa-camera"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/categories/reflection/"><i class="fa-fw fas fa-lightbulb"></i><span> 反思</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-globe"></i><span> 世界</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book-open"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/anime/"><i class="fa-fw fas fa-tv"></i><span> 番剧</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-language"></i><span> 中/EN</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/en/"><i class="fa-fw fas fa-globe"></i><span> English</span></a></li><li><a class="site-page child" href="/"><i class="fa-fw fas fa-home"></i><span> 中文</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Joenardo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/research/"><i class="fa-fw fas fa-flask"></i><span> 科研</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-feather"></i><span> 创作</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/poetry/"><i class="fa-fw fas fa-book"></i><span> 诗词</span></a></li><li><a class="site-page child" href="/categories/fanworks/"><i class="fa-fw fas fa-users"></i><span> 同人</span></a></li><li><a class="site-page child" href="/categories/essays/"><i class="fa-fw fas fa-pen"></i><span> 杂谈</span></a></li><li><a class="site-page child" href="/categories/photo/"><i class="fa-fw fas fa-camera"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/categories/reflection/"><i class="fa-fw fas fa-lightbulb"></i><span> 反思</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-globe"></i><span> 世界</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book-open"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/anime/"><i class="fa-fw fas fa-tv"></i><span> 番剧</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-language"></i><span> 中/EN</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/en/"><i class="fa-fw fas fa-globe"></i><span> English</span></a></li><li><a class="site-page child" href="/"><i class="fa-fw fas fa-home"></i><span> 中文</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><h1 class="title-seo">杂谈</h1></header><main class="layout hide-aside" id="content-inner"><div class="category-grid-layout"><div class="page-title" style="font-size: 2em; text-align: center; margin-bottom: 20px; color: #ffffff;">杂谈</div><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/05/20/%E6%9D%82%E8%B0%88/%E3%80%90%E5%8A%A8%E7%94%BB%E3%80%91%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B%E8%BE%B9%E7%BC%98%E8%A1%8C%E8%80%85/" title="【动画】赛博朋克边缘行者——伊卡洛斯与乌托邦">【动画】赛博朋克边缘行者——伊卡洛斯与乌托邦</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-05-20T13:51:14.000Z" title="Created 2026-05-20 21:51:14">2026-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/essays/">杂谈</a></span></div><div class="content">在2026年写边缘行者的杂谈，我又该写些什么来免于受陈词滥调的桎梏？可能是没法了。 希腊神话中，米诺斯的国王为了困住他牛头人身的儿子，令伊卡洛斯与其父代达罗斯建造迷宫，又将两人囚禁在高塔以保守秘密。为了逃脱，代达罗斯设计了飞行翼。可年轻人终究还是太年轻——伊卡洛斯因初次飞行所带来的喜悦，忘记了父亲的警告：飞得太低也不要飞得太高都会导致危险。他越飞越高，直到太阳的灼烧使得蜡翼融化，直到他坠入汪洋而溺死。 这也是David的故事，却不是因为喜悦，至少故事的后半段不是。 David本没有双翼，是他的母亲Gloria为他取得了翅膀。自从Gloria意外卷入黑帮火并死亡后，David的世界里就多了一轮太阳——他母亲的期许：“我希望你努力成为精英，爬到荒坂塔的顶端，我知道你一定能做到”。是的，我一定能做到。David为了母亲而坚信着，因为我是特殊的。他直视着一轮太阳。 他植入了义体斯安威斯坦，退了学，加入了边缘人的组织。他遇到了有着彩虹颜色头发的Lucy，老大Maine，Dorio，Rebecca与她的哥哥Pilar。渐渐地，他学会了开车，喝酒，开枪，格斗，他得到了Maine的认可，他与Lu...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/01/18/%E6%9D%82%E8%B0%88/%E3%80%90%E6%97%A5%E8%AE%B0%E3%80%91%E4%B8%80/" title="日记 一">日记 一</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-01-18T12:42:14.000Z" title="Created 2026-01-18 20:42:14">2026-01-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/essays/">杂谈</a></span></div><div class="content">该写日记了。 我真的该写日记了吗？我该写的是日记吗？我的日记里要写什么？这些个问题或许值得好好探讨探讨，可惜我绞尽了三秒钟的脑汁，都想不出个所以然。恐怕这些无关乎什么哲学命题，只是一个习惯质疑自己的人的脑海中自发泛起的泡沫。 幸好幸好，至少有一个问题的答案我是明确的：我为了什么而写日记？想来是为了记录，记录我平常，乃至平庸的生活。那些闪闪发光的日子是有特权的。新奇的，震撼的，感动的，幸福的讯号经由感官，被牢牢地篆刻在我的脊柱中。让我在夜空产生错觉，仿佛下一次眨眼便要错过烟花，风的一抹流动就能带走缱绻的温度。 平庸的生活则不同。我每一秒都在坚信自己将牢记当下，然后在一顿饭后把它们忘记。见了鬼，我的守护神不会是丰川祥子吧。在她的见证下，我的生活被我遗忘，然后被织成我的肌理，皮肉，去经历那些值得被记住的日子。 这太不公平了，我想，要是我这么容易被人忘记，我肯定直接大炮开兮轰**。平凡的日子理应被重视起来。不过又转念一想，是什么被铸成砝码放在天平两端？我的生活和我的生活吗？这也太神经了。那些不凡的日子不正是被那些平凡的日子所衬托出来的吗？ ……我说得对，但我还是决定记录一下。 感谢拖延症...</div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/city.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Joenardo</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.0.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"></div><script src="/js/magic.js?v=restore_v2"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

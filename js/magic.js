@@ -1,69 +1,94 @@
-// 自定义粒子散射特效
-(function() {
-  function initDisintegrate() {
-    // 获取那两句诗词所在的元素
-    const els = document.querySelectorAll('.site-top-left, .site-top-right');
-    if (!els.length) return;
+// Accessible, deterministic particle motion for the two homepage title fragments.
+(function () {
+  'use strict';
 
-    els.forEach(el => {
-      // 只有还没被拆分过才执行，避免页面切换时重复
-      if (!el.dataset.splitted) {
-        const text = el.innerText;
-        el.innerHTML = '';
-        for (let i = 0; i < text.length; i++) {
-          const char = text[i];
-          const span = document.createElement('span');
-          span.innerText = char === ' ' ? '\u00A0' : char; // 保留空格
-          span.style.display = 'inline-block';
-          span.style.position = 'relative';
-          el.appendChild(span);
-        }
-        el.dataset.splitted = 'true';
-      }
+  const selector = '.site-top-left, .site-top-right';
+  const timers = new Map();
+  const listeners = new Map();
+  const canAnimate = () => (
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches === false
+    && window.matchMedia('(hover: hover)').matches
+    && window.matchMedia('(pointer: fine)').matches
+  );
 
-      el.style.cursor = 'pointer';
-      
-      el.addEventListener('mouseenter', function() {
-        if (el.dataset.disintegrating === 'true') return;
-        el.dataset.disintegrating = 'true';
+  function clearElementTimers(element) {
+    for (const timer of timers.get(element) || []) clearTimeout(timer);
+    timers.delete(element);
+  }
 
-        const spans = el.querySelectorAll('span');
-        
-        // 【崩解阶段】：所有文字向四周四散并透明化
-        spans.forEach(span => {
-          const tx = (Math.random() - 0.5) * 120; // 横向炸开距离大幅缩小（原500 -> 120）
-          const ty = (Math.random() - 0.5) * 120 - 20; // 纵向炸开距离缩小
-          const rot = (Math.random() - 0.5) * 360; // 随机旋转
-          const dur = 0.4 + Math.random() * 0.5; // 动画时长稍微加快配合小范围
-
-          span.style.transition = `transform ${dur}s cubic-bezier(0.1, 0.9, 0.2, 1), opacity ${dur}s ease-out, filter ${dur}s ease-out`;
-          span.style.transform = `translate(${tx}px, ${ty}px) rotate(${rot}deg) scale(${0.7 + Math.random() * 0.5})`; // 缩放变化减弱
-          span.style.opacity = '0';
-          span.style.filter = 'blur(0.5px)'; // 去除原本 5px 的重度模糊，变为极轻微运动模糊，保持字符清晰
-        });
-
-        // 【重组阶段】：时光倒流回到原地
-        setTimeout(() => {
-          spans.forEach(span => {
-            span.style.transition = `transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease-in, filter 0.6s ease-in`;
-            span.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
-            span.style.opacity = '1';
-            span.style.filter = 'blur(0px)';
-          });
-
-          // 动画结束后解除状态锁定，允许再次触发
-          setTimeout(() => {
-            el.dataset.disintegrating = 'false';
-          }, 600);
-        }, 1100); // 崩解炸开后，等待 1.1 秒开始飞回
-      });
+  function splitText(element) {
+    if (element.dataset.motionReady === 'true') return;
+    const text = element.textContent;
+    element.textContent = '';
+    element.setAttribute('aria-label', text);
+    element.tabIndex = 0;
+    Array.from(text).forEach((character, index) => {
+      const particle = document.createElement('span');
+      const angle = index * 2.3999632297 + (element.classList.contains('site-top-right') ? Math.PI : 0);
+      const radius = 32 + (index % 5) * 8;
+      particle.className = 'site-top-particle';
+      particle.textContent = character === ' ' ? '\u00a0' : character;
+      particle.setAttribute('aria-hidden', 'true');
+      particle.style.setProperty('--particle-x', `${(Math.cos(angle) * radius).toFixed(2)}px`);
+      particle.style.setProperty('--particle-y', `${(Math.sin(angle) * radius * 0.66 - 9).toFixed(2)}px`);
+      particle.style.setProperty('--particle-rot', `${((index * 47) % 96) - 48}deg`);
+      particle.style.setProperty('--particle-delay', `${Math.min(index * 14, 154)}ms`);
+      element.appendChild(particle);
     });
+    element.dataset.motionReady = 'true';
   }
 
-  // 页面初次加载时执行
-  document.addEventListener('DOMContentLoaded', initDisintegrate);
-  // 适配 Butterfly 主题的 Pjax 页面无刷新切换
-  if (window.btf && typeof window.btf.addGlobalFn === 'function') {
-    window.btf.addGlobalFn('pjaxComplete', initDisintegrate);
+  function play(element) {
+    if (!canAnimate() || element.dataset.motionPlaying === 'true') return;
+    clearElementTimers(element);
+    element.dataset.motionPlaying = 'true';
+    element.classList.remove('is-reassembling');
+    void element.offsetWidth;
+    element.classList.add('is-disintegrating');
+
+    const reassemble = window.setTimeout(() => {
+      element.classList.remove('is-disintegrating');
+      element.classList.add('is-reassembling');
+    }, 760);
+    const finish = window.setTimeout(() => {
+      element.classList.remove('is-reassembling');
+      element.dataset.motionPlaying = 'false';
+      timers.delete(element);
+    }, 1480);
+    timers.set(element, [reassemble, finish]);
   }
-})();
+
+  function bind(element) {
+    splitText(element);
+    if (listeners.has(element)) return;
+    const enter = () => play(element);
+    const focus = event => {
+      if (event.target === element) play(element);
+    };
+    element.addEventListener('mouseenter', enter);
+    element.addEventListener('focusin', focus);
+    listeners.set(element, { enter, focus });
+  }
+
+  function init() {
+    document.querySelectorAll(selector).forEach(bind);
+  }
+
+  function destroy() {
+    for (const [element, handlers] of listeners) {
+      clearElementTimers(element);
+      element.removeEventListener('mouseenter', handlers.enter);
+      element.removeEventListener('focusin', handlers.focus);
+      element.classList.remove('is-disintegrating', 'is-reassembling');
+      element.dataset.motionPlaying = 'false';
+    }
+    listeners.clear();
+  }
+
+  window.JoenardoMotion = { init, destroy, canAnimate };
+  document.addEventListener('DOMContentLoaded', init, { once: true });
+  document.addEventListener('pjax:complete', init);
+  if (window.btf && typeof window.btf.addGlobalFn === 'function') {
+    window.btf.addGlobalFn('pjaxComplete', init);
+  }
+}());

@@ -86,3 +86,60 @@
 
 
 .layout > .category-grid-layout { background: transparent !important; box-shadow: none !important; padding: 0 !important; }
+
+/* Restrained retro-futurist motion for the homepage masthead. */
+.site-top-left,
+.site-top-right {
+    position: relative;
+    cursor: default;
+    letter-spacing: 0.055em;
+    text-shadow: 0 0 14px rgba(163, 222, 255, 0.34), 0 1px 20px rgba(255, 214, 153, 0.22);
+    outline: none;
+}
+
+.site-top-left:focus-visible,
+.site-top-right:focus-visible {
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0 1px rgba(210, 238, 255, 0.72), 0 0 18px rgba(120, 202, 255, 0.28);
+}
+
+.site-top-particle {
+    display: inline-block;
+    position: relative;
+    will-change: transform, opacity, filter;
+    transform: translate3d(0, 0, 0) rotate(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+}
+
+.is-disintegrating .site-top-particle {
+    transform: translate3d(var(--particle-x), var(--particle-y), 0) rotate(var(--particle-rot)) scale(0.84);
+    opacity: 0;
+    filter: blur(1.2px) drop-shadow(0 0 5px rgba(138, 218, 255, 0.72));
+    transition:
+        transform 620ms cubic-bezier(0.22, 0.72, 0.22, 1) var(--particle-delay),
+        opacity 510ms ease-out var(--particle-delay),
+        filter 560ms ease-out var(--particle-delay);
+}
+
+.is-reassembling .site-top-particle {
+    transform: translate3d(0, 0, 0) rotate(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+    transition:
+        transform 640ms cubic-bezier(0.16, 1, 0.3, 1) var(--particle-delay),
+        opacity 430ms ease-in var(--particle-delay),
+        filter 480ms ease-in var(--particle-delay);
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+    .site-top-particle,
+    .is-disintegrating .site-top-particle,
+    .is-reassembling .site-top-particle {
+        transform: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+        transition: none !important;
+        will-change: auto;
+    }
+}
